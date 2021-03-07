@@ -1,0 +1,29 @@
+<html>
+<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+<script>
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            var acr = position.coords.accuracy;
+            console.log(position);
+            $.ajax({
+                type: 'POST',
+                url: '/setlocation',
+                data: { position: { lat, lng } },
+                success: (data) => {
+                    console.log(data);
+                    window.location = data.redirectUrl;
+                },
+                error: () => {
+                    alert('No data');
+                }
+            });
+        }, (error) => {
+            console.log(error);
+        }, { enableHighAccuracy: true });
+    }
+</script>
+
+</html>

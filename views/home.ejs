@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Update 24x7 News</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    <% if(mode=='' ) {%>
+        <%- include('partials/header') %>
+            <div style="height: 100px; padding: 20px;">
+                <span>Current Temperature: <%- weather.main.temp %> F</span>
+                <span>But Feels like: <%- weather.main.feels_like %> F</span>
+                <span>Min Temperature: <%- weather.main.temp_min %> F</span>
+                <span>Max Temperature: <%- weather.main.temp_max %> F</span>
+                <span>Humidity: <%- weather.main.humidity %> %</span>
+                <span>Place: <%- weather.name %></span>
+            </div>
+            <div style="padding: 20px; height: 340px !important;">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" style="height: 300px;">
+                            <img src="cinqueterre.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" style="height: 300px;">
+                            <img src="cinqueterre.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" style="height: 300px;">
+                            <img src="cinqueterre.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <% for(var i=0; i<news.length; i++) {%>
+
+                    <div class="d-inline p-2 bg-primary text-white">
+                        <%= news[i].title %>
+                    </div>
+                    <% } %>
+            </div>
+            <div>
+                <%= news[0].description %>
+            </div>
+            <%- include('partials/footer') %>
+                <% } %>
+</body>
